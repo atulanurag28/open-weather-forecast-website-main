@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Weather Map</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css">
+  <style>
+    #map {
+      height: 86vh;
+      width: 88vw;
+      margin-top: 2%;
+    }
+  </style>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="weather-main">
+        <%- include('nav') -%>
+        <div>
+            <div>
+            <form action="/mapSearch" method="post">
+                <input name="current_city_value" id="city-input" placeholder="Search For The Cities" autocomplete="off">
+                <button type="submit" id="city-btn">Show</button>
+            </form></div>
+           <div id="map"></div> 
+        </div>
+        
+    </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+  <script>
+    const cityName = "<%= cityName %>";
+    const apiKey = '8db7bc96e05dde45f11d738f2382639c';
+    const zoomLevel = 10;
+
+    // Get the latitude and longitude of the city
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`)
+      .then(response => response.json())
+      .then(data => {
+        const lat = data.coord.lat;
+        const lon = data.coord.lon;
+
+        // Create the map
+        const map = L.map('map').setView([lat, lon], zoomLevel);
+
+        // Add the OpenWeatherMap tile layer
+        const tileLayerUrl = `https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`;
+        const tileLayerOptions = {
+          attribution: 'Map data &copy; OpenWeatherMap',
+          maxZoom: 19
+        };
+        const tileLayer = L.tileLayer(tileLayerUrl).addTo(map);
+
+
+
+
+        // Add a marker to the map
+        const marker = L.marker([lat, lon]).addTo(map);
+
+        // Add a popup to the marker with the current weather condition
+        const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
+        fetch(weatherUrl)
+          .then(response => response.json())
+          .then(data => {
+            const weather = data.weather[0].main;
+            const popupContent = `The current weather in ${cityName} is ${weather}.`;
+            marker.bindPopup(popupContent).openPopup();
+          });
+      })
+      .catch(error => console.log(error));
+  </script>
+</body>
+</html>
+

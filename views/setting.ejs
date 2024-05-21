@@ -1,0 +1,72 @@
+<%- include('header') -%>
+<div id="weather-main">
+    <%- include('nav') -%>
+    <div id="weather-setting">
+        <p style="font-size: xx-large;font-weight: bold;font-family: sans-serif;color: white;">UNITS</p>
+        <div id="select-units">
+            <form action="/setting" method="post">
+            <p style="color: gainsboro;font-size: large;font-family: sans-serif;">Temprature</p>
+            <% if(temp_cel==true){ %>
+                <input type="radio" value="metric" name="temp" checked> &nbsp Celcius <br>
+                <input type="radio" name="temp" value="imperial"> &nbsp Farenhite <br>
+            <% }else{  %>
+            <input type="radio" value="metric" name="temp"> &nbsp Celcius <br>
+            <input type="radio" name="temp" value="imperial" checked> &nbsp Farenhite <br>
+            <% } %>
+            <br>
+            <p style="color: gainsboro;font-size: large;font-family: sans-serif;">Languages</p>
+            <%  if(language=="en"){ %>
+                <input type="radio" name="lang" value="en" checked> &nbsp English <br> 
+                <input type="radio" name="lang" value="kr"> &nbsp Korean <br>
+                <input type="radio" name="lang" value="ja"> &nbsp Japanese <br>
+                <input type="radio" name="lang" value="es"> &nbsp Spanish <br>
+                <input type="radio" name="lang" value="fr"> &nbsp French <br>
+                <input type="radio" name="lang" value="nl"> &nbsp Dutch <br>
+                <%  } else if(language=="ko"){ %>
+                <input type="radio" name="lang" value="en"> &nbsp English <br> 
+                <input type="radio" name="lang" value="kr" checked> &nbsp Korean <br>
+                <input type="radio" name="lang" value="ja"> &nbsp Japanese <br>
+                <input type="radio" name="lang" value="es"> &nbsp Spanish <br>
+                <input type="radio" name="lang" value="fr"> &nbsp French <br>
+                <input type="radio" name="lang" value="nl"> &nbsp Dutch <br>
+                <%  }else if(language=="ja"){ %>
+                <input type="radio" name="lang" value="en"> &nbsp English <br> 
+                <input type="radio" name="lang" value="kr"> &nbsp Korean <br>
+                <input type="radio" name="lang" value="ja" checked> &nbsp Japanese <br>
+                <input type="radio" name="lang" value="es"> &nbsp Spanish <br>
+                <input type="radio" name="lang" value="fr"> &nbsp French <br>
+                <input type="radio" name="lang" value="nl"> &nbsp Dutch <br>
+                <%  }else if(language=="es"){ %>
+                <input type="radio" name="lang" value="en"> &nbsp English <br> 
+                <input type="radio" name="lang" value="kr"> &nbsp Korean <br>
+                <input type="radio" name="lang" value="ja"> &nbsp Japanese <br>
+                <input type="radio" name="lang" value="es" checked> &nbsp Spanish <br>
+                <input type="radio" name="lang" value="fr"> &nbsp French <br>
+                <input type="radio" name="lang" value="nl"> &nbsp Dutch <br>
+                <%  }else if(language=="fr"){ %>
+                <input type="radio" name="lang" value="en"> &nbsp English <br> 
+                <input type="radio" name="lang" value="kr"> &nbsp Korean <br>
+                <input type="radio" name="lang" value="ja"> &nbsp Japanese <br>
+                <input type="radio" name="lang" value="es"> &nbsp Spanish <br>
+                <input type="radio" name="lang" value="fr" checked> &nbsp French <br>
+                <input type="radio" name="lang" value="nl"> &nbsp Dutch <br>
+                <%  }else if(language=="nl"){ %>
+                <input type="radio" name="lang" value="en"> &nbsp English <br> 
+                <input type="radio" name="lang" value="kr"> &nbsp Korean <br>
+                <input type="radio" name="lang" value="ja"> &nbsp Japanese <br>
+                <input type="radio" name="lang" value="es"> &nbsp Spanish <br>
+                <input type="radio" name="lang" value="fr"> &nbsp French <br>
+                <input type="radio" name="lang" value="nl" checked> &nbsp Dutch <br>
+                
+           <% } %>
+           
+            
+            <br>
+
+            <button onclick="changeUnit()" style="background-color: burlywood;color: black;font-size: large;font-family: sans-serif;font-weight: bold;height: 30px;width: 80px;border: none;border-radius: 10px;text-align: center;margin-top: 3%;cursor: pointer;">SAVE</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+<%- include('footer') -%>

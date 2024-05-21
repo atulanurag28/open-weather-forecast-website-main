@@ -1,0 +1,19 @@
+<%- include('header') -%>
+<div id="weather-main">
+     
+    <%- include('nav') -%>
+
+
+    <div id="weather-condition">
+        <div id="today-weather">
+
+            <!-- take input -->
+            <form action="/mapSearch" method="post">
+                <input name="current_city_value" id="city-input" placeholder="Search For The Cities" autocomplete="off">
+                <button type="submit" id="city-btn">Show</button>
+            </form>
+
+            </div>
+    </div>
+</div>
+    <%- include('footer') -%>

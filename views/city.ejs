@@ -1,0 +1,139 @@
+<%- include('header') -%>
+<div id="weather-main">
+     
+    <%- include('nav') -%>
+
+
+    <div id="weather-condition">
+        <div id="today-weather">
+
+            <!-- take input -->
+            <form action="/mainHome" method="post">
+                <input name="current_city_value" id="city-input" placeholder="Search For The Cities" autocomplete="off">
+                <button type="submit" id="city-btn">Show</button>
+            </form>
+
+            <!-- weather summary -->
+
+            <div id="weather-summary">
+                <div id="summary-text">
+                    <p style="font-size: xx-large;font-family: sans-serif;font-weight: bold;color: white;margin-bottom: 1%;"><%= location %> <img src="location.png" height="30px" width="36px"></p>
+                    <p style="font-size: medium;font-family: sans-serif;color: wheat;margin-top: 0%;padding-top: 0%;">Chances of Rain:- <%=   rain_chance %>%</p>
+                    <p style="font-size: xxx-large;font-family: sans-serif;font-weight: bold;color: white;margin-top: 2%;margin-bottom: 4%;"><%= temp %>&deg</p>
+                </div>
+                <div id="summary-img">
+                    <img src="https://openweathermap.org/img/w/<%= icon %>.png" alt="weather icon" height="170px">
+                </div>
+            </div>
+           
+
+            <!-- today's forecast -->
+            <div id="day-forecast">
+                <p style="color: gainsboro;font-size: small;font-family: sans-serif;margin-left: 1%;">TODAY'S FORECAST</p>
+
+
+                <div id="day-forecast-box">
+                    <div class="day-forecast-item">
+                        <p style="font-size: medium;font-family: sans-serif;color:skyblue;margin-bottom: 0%;"><%= time1_date %></p>
+                        <p style="font-size: small;font-family: sans-serif;color: gainsboro;margin-top: 0%;"><%= time1_time %></p>
+                        <img src="https://openweathermap.org/img/w/<%= time1_icon %>.png" height="36px" width="36px">
+                        <p style="font-size: x-large;font-family: sans-serif;font-weight: bold;color: white;margin-top: 2%;"><%= time1_temp %>&deg</p>
+                    </div>
+                    <div class="day-forecast-item">
+                        <p style="font-size: medium;font-family: sans-serif;color: skyblue;margin-bottom: 0%;"><%= time2_date %></p>
+                        <p style="font-size: small;font-family: sans-serif;color: gainsboro;margin-top: 0%;"><%= time2_time %></p>
+                        <img src="https://openweathermap.org/img/w/<%= time2_icon %>.png" height="36px" width="36px">
+                        <p style="font-size: x-large;font-family: sans-serif;font-weight: bold;color: white;margin-top: 2%;"><%= time2_temp %>&deg</p>
+                    </div>
+                    <div class="day-forecast-item">
+                        <p style="font-size: medium;font-family: sans-serif;color: skyblue;margin-bottom: 0%;"><%= time3_date %></p>
+                        <p style="font-size: small;font-family: sans-serif;color: gainsboro;margin-top: 0%;"><%= time3_time %></p>
+                        <img src="https://openweathermap.org/img/w/<%= time3_icon %>.png" height="36px" width="36px">
+                        <p style="font-size: x-large;font-family: sans-serif;font-weight: bold;color: white;margin-top: 2%;"><%= time3_temp %>&deg</p>
+                    </div>      
+                    <div class="day-forecast-item">
+                        <p style="font-size: medium;font-family: sans-serif;color: skyblue;margin-bottom: 0%;"><%= time4_date %></p>
+                        <p style="font-size: small;font-family: sans-serif;color: gainsboro;margin-top: 0%;"><%= time4_time %></p>
+                        <img src="https://openweathermap.org/img/w/<%= time4_icon %>.png" height="36px" width="36px">
+                        <p style="font-size: x-large;font-family: sans-serif;font-weight: bold;color: white;margin-top: 2%;"><%= time4_temp %>&deg</p>
+                    </div>
+                    <div class="day-forecast-item">
+                        <p style="font-size: medium;font-family: sans-serif;color: skyblue;margin-bottom: 0%;"><%= time5_date %></p>
+                        <p style="font-size: small;font-family: sans-serif;color: gainsboro;margin-top: 0%;"><%= time5_time %></p>
+                        <img src="https://openweathermap.org/img/w/<%= time5_icon %>.png" height="36px" width="36px">
+                        <p style="font-size: x-large;font-family: sans-serif;font-weight: bold;color: white;margin-top: 2%;"><%= time5_temp %>&deg</p>
+                    </div>
+                    <div id="pm9" class="day-forecast-item">
+                        <p style="font-size: medium;font-family: sans-serif;color: skyblue;margin-bottom: 0%;"><%= time6_date %></p>
+                        <p style="font-size: small;font-family: sans-serif;color: gainsboro;margin-top: 0%;"><%= time6_time %></p>
+                        <img src="https://openweathermap.org/img/w/<%= time6_icon %>.png" height="36px" width="36px">
+                        <p style="font-size: x-large;font-family: sans-serif;font-weight: bold;color: white;margin-top: 2%;"><%= time6_temp %>&deg</p>
+                    </div>
+                </div>
+            </div>
+
+          
+
+            <!-- air condition -->
+            <div id="air-condition">
+                <p style="color: gainsboro;font-size: small;font-family: sans-serif;margin-left: 1%;">AIR CONDITION</p>
+                <div id="air-condition-box">
+                    <div class="air-condition-item">
+                        <p>Chances of rain</p>
+                        <p><%= rain_chance %>%</p>
+                    </div>
+                    <div class="air-condition-item">
+                        <p>Wind</p>
+                        <p><%= wind_speed %> km/hr</p>
+                    </div>   
+                    <div class="air-condition-item">
+                        <p>Real Feel</p>
+                        <p><%= temp_feel %>&deg;</p>
+                    </div> 
+                </div>
+            </div>
+            
+        </div>
+
+
+
+
+        <!-- 7 days forecast -->
+        <div id="forecast">
+            <p style="color: gainsboro;font-size: small;font-family: sans-serif;margin-left: 3%;margin-top: 7%;">NEXT-DAYS FORECAST</p>
+            <div id="weekly-forecast-box">
+                <div class="weekly-forecast-item">
+                    <div style="width: 30%;">Today</div>
+                    <div style="width: 30%;"><img src="https://openweathermap.org/img/w/<%= icon %>.png" height="36px" width="36px"></div>
+                    <div style="width: 30%;"><%= today_desc %></div>
+                </div>
+                <div class="weekly-forecast-item">
+                    <div style="width: 30%;"><%= day1 %></div>
+                    <div style="width: 30%;"><img src="https://openweathermap.org/img/w/<%= day1_icon %>.png" height="36px" width="36px"></div>
+                    <div style="width: 30%;"><%= day1_desc %></div>
+                </div>
+                <div class="weekly-forecast-item">
+                    <div style="width: 30%;"><%= day2 %></div>
+                    <div style="width: 30%;"><img src="https://openweathermap.org/img/w/<%= day2_icon %>.png" height="36px" width="36px"></div>
+                    <div style="width: 30%;"><%= day2_desc %></div>
+                </div>
+                <div class="weekly-forecast-item">
+                    <div style="width: 30%;"><%= day3 %></div>
+                    <div style="width: 30%;"><img src="https://openweathermap.org/img/w/<%= day3_icon %>.png" height="36px" width="36px"></div>
+                    <div style="width: 30%;"><%= day3_desc %></div>
+                </div>
+                <div class="weekly-forecast-item">
+                    <div style="width: 30%;"><%= day4 %></div>
+                    <div style="width: 30%;"><img src="https://openweathermap.org/img/w/<%= day4_icon %>.png" height="36px" width="36px"></div>
+                    <div style="width: 30%;"><%= day4_desc %></div>
+                </div>
+                <div class="weekly-forecast-item">
+                    <div style="width: 30%;"><%= day5 %></div>
+                    <div style="width: 30%;"><img src="https://openweathermap.org/img/w/<%= day5_icon %>.png" height="36px" width="36px"></div>
+                    <div style="width: 30%;"><%= day5_desc %></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('footer') -%>

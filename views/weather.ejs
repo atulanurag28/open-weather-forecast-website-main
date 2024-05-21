@@ -1,0 +1,25 @@
+<%- include('header'); -%>
+<div id="weather-main">
+    <%- include('nav') -%>
+    <!------------------- weather-content ------------------------------>
+    <div id="weather-content">
+    <div>
+        <p id="current_location"><span id="current_city"></span> <img src="location.png" height="30px" width="36px"></p> 
+        <form method="post" action="/mainHome">
+            <input type="hidden" name="current_city_value" id="current_city_value">
+            <button type="submit" id="btn">Check the current location weather</button>
+          </form>
+
+    </div>
+   <p style="font-size: xx-large;font-weight: bold;color: white;font-family: sans-serif;margin-top: 3%;">POPULAR CITY</p>
+    <div id="popular-city">
+        <form action="/mainHome" method="post"><input type="hidden" name="current_city_value" value="London"><button id="London" class="example" type="submit">London</button></form>
+        <form action="/mainHome" method="post"><input type="hidden" name="current_city_value" value="Brazil"><button id="Brazil" class="example" type="Submit">Brazil</button></form>
+        <form action="/mainHome" method="post"><input type="hidden" name="current_city_value" value="Delhi"><button id="Delhi" class="example" type="submit">Delhi</button></form>
+        <form action="/mainHome" method="post"><input type="hidden" name="current_city_value" value="Mumbai"><button id="Mumbai" class="example" type="submit">Mumbai</button></form>
+    </div>
+
+<p style="color: white;font-size: medium;font-family: sans-serif;margin-top: 2%;cursor: pointer;" onclick="location=href='/city'">See More</p>
+    </div>
+    </div>
+<%- include('footer'); -%>
